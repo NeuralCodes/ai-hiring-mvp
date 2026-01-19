@@ -1,0 +1,5 @@
+# Dependencies for push_teamtailor function
+# Add packages here as needed:
+# functions-framework==3.*
+# google-auth==2.*
+# requests==2.*

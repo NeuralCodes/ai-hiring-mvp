@@ -1,0 +1,32 @@
+flowchart LR
+    subgraph sources [Data Sources]
+        GOB[GetOnBoard]
+    end
+
+    subgraph gcp [GCP Cloud Functions]
+        INGEST[ingest_getonboard]
+        EVAL[evaluate_candidate]
+        PUSH[push_teamtailor]
+    end
+
+    subgraph storage [Storage]
+        SHEETS[(Google Sheets)]
+    end
+
+    subgraph llm [LLM]
+        GEMINI[Gemini API]
+    end
+
+    subgraph ats [ATS]
+        TT[TeamTailor]
+    end
+
+    GOB -->|fetch candidates| INGEST
+    INGEST -->|store| SHEETS
+    SHEETS -->|load candidates| EVAL
+    SHEETS -->|load prompts| EVAL
+    EVAL -->|generate| GEMINI
+    GEMINI -->|evaluation| EVAL
+    EVAL -->|store results| SHEETS
+    SHEETS -->|load evaluated| PUSH
+    PUSH -->|sync| TT

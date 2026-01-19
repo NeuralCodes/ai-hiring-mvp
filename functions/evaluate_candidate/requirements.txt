@@ -1,0 +1,5 @@
+# Dependencies for evaluate_candidate function
+# Add packages here as needed:
+# functions-framework==3.*
+# google-auth==2.*
+# google-cloud-aiplatform==1.*

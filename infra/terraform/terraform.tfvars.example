@@ -1,0 +1,4 @@
+project_id    = "your-gcp-project-id"
+region        = "us-central1"
+source_bucket = "your-source-bucket"
+environment   = "dev"
